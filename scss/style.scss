@@ -1,0 +1,156 @@
+@function rem($px) {
+  @return ($px / 16) * 1rem;
+}
+
+:root {
+  --violet: hsl(257, 40%, 49%);
+  --soft-magenta: hsl(300, 69%, 71%);
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  background: center / cover no-repeat url(/images/bg-desktop.svg), var(--violet);
+
+  @media only screen and (max-width: rem(768)) {
+    background: top / contain no-repeat url(/images/bg-mobile.svg), var(--violet);
+  }
+}
+
+header {
+  font-family: "Open Sans", sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.5rem);
+
+  margin-bottom: rem(40);
+  line-height: 1.5;
+}
+
+.main-container {
+  max-width: 1284px;
+  margin: 0 auto;
+
+  @media only screen and (max-width: rem(1440)) {
+    max-width: rem(1110);
+  }
+
+  @media only screen and (max-width: rem(1024)) {
+    max-width: rem(768);
+  }
+
+  @media only screen and (max-width: rem(768)) {
+    max-width: 87%;
+  }
+}
+
+.logo {
+  margin-top: rem(46);
+
+  @media only screen and (max-width: rem(768)) {
+    img {
+      width: rem(200);
+      height: rem(48);
+    }
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  padding-top: rem(50);
+  gap: rem(58);
+
+  @media only screen and (max-width: rem(768)) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero {
+  width: 100%;
+  background: center / contain no-repeat url(/images/illustration-mockups.svg);
+
+  @media only screen and (max-width: rem(768)) {
+    background: center / contain no-repeat url(/images/illustration-mockups.svg);
+    min-height: rem(300);
+  }
+}
+
+main {
+  width: 100%;
+  padding-top: rem(48);
+
+  @media only screen and (max-width: rem(768)) {
+    text-align: center;
+    padding: 0;
+  }
+}
+
+p {
+  font-size: clamp(1rem, 1vw, 1.5rem);
+  line-height: 1.6;
+  padding-bottom: rem(28);
+}
+
+button {
+  font-family: inherit;
+  font-size: rem(18);
+  border: none;
+  width: rem(200);
+  height: rem(56);
+  border-radius: rem(32);
+  cursor: pointer;
+  box-shadow: 3px 10px 10px hsl(257, 40%, 40%);
+  background-color: white;
+  color: var(--violet);
+
+  &:hover {
+    background-color: var(--soft-magenta);
+    color: white;
+  }
+}
+
+.share {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: rem(28);
+  padding-bottom: rem(40);
+
+  i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: rem(40);
+    height: rem(40);
+    border-radius: 50%;
+    border: 1px solid white;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--soft-magenta);
+      border: 1px solid var(--soft-magenta);
+    }
+  }
+
+  & > * + * {
+    margin-left: rem(16);
+  }
+
+  @media only screen and (max-width: rem(768)) {
+    justify-content: center;
+    padding-top: rem(120);
+    padding-bottom: rem(76);
+  }
+}
